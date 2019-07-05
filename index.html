@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="mx-auto">
+                <h1>Gif Search!</h1>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="artists"
+                        checked>
+                    <label class="form-check-label" for="gridRadios1">
+                        Artists/Bans
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="animals">
+                    <label class="form-check-label" for="gridRadios2">
+                        Animals
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="food">
+                    <label class="form-check-label" for="gridRadios3">
+                        Food
+                    </label>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <form id="movie-form">
+                    <label for="movie-input">Add New</label>
+                    <input type="text" id="movie-input"><br>
+
+                    <!-- Button triggers new movie to be added -->
+                    <input id="add-something" type="submit" value="Add">
+                </form>
+                <button id="clear">Clear</button>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="mx-auto">
+
+            </div>
+        </div>
+
+        <div id="buttons" class="row">
+            <div id="buttonshere" class="col-lg-12">
+                <h2 id="errors"></h2>
+
+            </div>
+        </div>
+
+        <div id="images" class="row">
+
+
+        </div>
+
+        <div class="row">
+
+            <div id="artists" class="col-12"></div>
+
+        </div>
+    </div>
+
+    <script src="assets/javascript/script.js"></script>
+</body>
+
+</html>
