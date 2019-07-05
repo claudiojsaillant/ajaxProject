@@ -21,9 +21,10 @@ img {
 
 @media screen and (max-width: 640px) {
     #images {
-        display: block;
+        padding-left: 22%;
+        display: flex;
         margin-left: auto;
         margin-right: auto;
-        width: 50%;
+        width: 100%;
     }
 }
