@@ -16,7 +16,6 @@ if (arrayInLocal != undefined) {
     mainObject.favorites = arrayInLocal;
 }
 
-
 function createButtons(arr) {
     $('#buttonshere').empty();
     for (i = 0; i < arr.length; i++) {
@@ -37,7 +36,6 @@ function addFavorite() {
     }
 
 }
-
 
 function gifState() {
 
@@ -124,11 +122,9 @@ $('.form-check-input').click(function(event) {
         createButtons(mainObject[currentCheck]);
     } else {
         $('#buttonshere').empty();
-
+        $('#artists').empty();
         $('#images').empty();
         for (i = 0; i < mainObject.favorites.length; i++) {
-
-
             $('#images').prepend(mainObject.favorites[i]);
 
         }
@@ -158,11 +154,10 @@ $("#favorite").on('click', function() {
 
 
 
-
-
 $(document).on("click", ".item", ajaxCall);
 $(document).on("click", "img", gifState);
 $(document).on("click", ".imageitem", addFavorite);
+$(document).on("click", ".artists", addFavorite);
 
 $("#clear").on("click", function() {
     $("#images").empty();
