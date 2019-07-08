@@ -1,6 +1,5 @@
-var currentCheck;
+var currentCheck = "artists";
 var favoriteMode = false;
-
 
 mainObject = {
     animals: ['Cat', 'Dog', 'Chicken'],
@@ -41,7 +40,6 @@ function gifState() {
     var gifState = gifClicked.attr('data-state');
     var stillSrc = gifClicked.attr('data-still');
     var animateSrc = gifClicked.attr('data-animate');
-
     if (gifState === 'still') {
         gifClicked.attr('data-state', 'animate');
         gifClicked.attr('src', animateSrc);
@@ -49,13 +47,11 @@ function gifState() {
         gifClicked.attr('data-state', 'still');
         gifClicked.attr('src', stillSrc);
     }
-
 }
 
 function formCheck() {
     if ($(this).prop("checked") == true) {
         currentCheck = $(this).val();
-        console.log(currentCheck);
     }
 
     var hey = "Add " + currentCheck;
@@ -64,6 +60,7 @@ function formCheck() {
         $('#images').empty();
         createButtons(mainObject[currentCheck]);
     } else {
+
         $('#buttonshere').empty();
         $('#artists').empty();
         $('#images').empty();
@@ -91,7 +88,7 @@ function ajaxCall() {
             url: queryURL,
             method: "GET"
         }).then(function (response) {
-            console.log('hey');
+
             for (i = 0; i < 10; i++) {
                 var gifUrl = response.data[i].images.downsized_still.url;
                 var itemImage = $("<img>");
@@ -114,7 +111,6 @@ function ajaxCall() {
             url: queryURL,
             method: "GET"
         }).then(function (response) {
-            console.log('hey');
             $('#images').empty();
             var newDiv = $('<div class="artists">');
             var artistName = $("<h1>").text(response.name);
@@ -133,7 +129,7 @@ function ajaxCall() {
 }
 
 
-$('.form-check-input').on("click" , formCheck)
+$('.form-check-input').on("click", formCheck)
 
 $("#add-something").on("click", function (event) {
 
@@ -173,7 +169,6 @@ $('#clearfav').on("click", function () {
     else {
         alert("Favorites have not been erased")
     }
-
 })
 
 
@@ -182,3 +177,4 @@ $(document).on("click", "img", gifState);
 $(document).on("click", ".imageitem", addFavorite);
 $(document).on("click", ".artists", addFavorite);
 
+formCheck();
