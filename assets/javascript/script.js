@@ -169,6 +169,7 @@ $('#clearfav').on("click", function () {
     var userCheck = confirm('Are you sure?')
     if (userCheck) {
         localStorage.clear();
+        alert("Favorites have been erased")
     }
     else {
         alert("Favorites have not been erased")
