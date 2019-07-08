@@ -67,12 +67,16 @@ function formCheck() {
 
         createButtons(mainObject[currentCheck]);
     } else {
+
+        if (mainObject.favorites.length === 0){
+            alert("You don't have any favorites")
+        }
         $('#clearfav').show();
         $('#movie-form').hide();
         $('#buttonshere').empty();
         $('#artists').empty();
         $('#images').empty();
-
+        
         for (i = 0; i < mainObject.favorites.length; i++) {
             if (mainObject.favorites[i].substring(12, 13) === 'a') {
                 $('#artists').prepend(mainObject.favorites[i]);

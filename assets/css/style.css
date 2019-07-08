@@ -17,9 +17,6 @@ input {
     margin: 5px;
 }
 
-.artists {
-    border-bottom: 5px solid black;
-}
 
 p {
     text-align: center;
@@ -67,4 +64,18 @@ button,#add-something {
 
 a:hover {
     text-decoration: none;
+}
+
+.artists {
+    border-bottom: 5px solid black;
+}
+
+.imageitem   {
+   
+    border: solid black 3px;
+    
+}
+
+.artists {
+    width: 350px;
 }
