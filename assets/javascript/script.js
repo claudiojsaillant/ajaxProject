@@ -169,6 +169,9 @@ $('#clearfav').on("click", function () {
     var userCheck = confirm('Are you sure?')
     if (userCheck) {
         localStorage.clear();
+        mainObject.favorites = [];
+        $("#images").empty();
+        $("#artists").empty();
         alert("Favorites have been erased")
     }
     else {
