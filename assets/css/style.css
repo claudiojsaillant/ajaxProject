@@ -27,3 +27,7 @@ img {
         width: 100%;
     }
 }
+
+#favbuttons {
+    padding-top: 10px;
+}

@@ -2,7 +2,6 @@ var currentCheck;
 var favoriteMode = false;
 
 
-
 mainObject = {
     animals: ['Cat', 'Dog', 'Chicken'],
     food: ['Hot Dog', 'Pizza', 'Ice Cream'],
@@ -29,9 +28,8 @@ function createButtons(arr) {
 
 function addFavorite() {
     var newFavorite = this.outerHTML;
-    if (favoriteMode === true) {
+    if (favoriteMode === true && newFavorite != null && newFavorite != undefined) {
         mainObject.favorites.push(newFavorite);
-        console.log(mainObject.favorites);
         localStorage.setItem("array", JSON.stringify(mainObject.favorites));
     }
 
@@ -54,6 +52,34 @@ function gifState() {
 
 }
 
+function formCheck() {
+    if ($(this).prop("checked") == true) {
+        currentCheck = $(this).val();
+        console.log(currentCheck);
+    }
+
+    var hey = "Add " + currentCheck;
+    $('#add-something').attr('value', hey);
+    if (currentCheck != 'favorites') {
+        $('#images').empty();
+        createButtons(mainObject[currentCheck]);
+    } else {
+        $('#buttonshere').empty();
+        $('#artists').empty();
+        $('#images').empty();
+
+        for (i = 0; i < mainObject.favorites.length; i++) {
+            if (mainObject.favorites[i].substring(12, 13) === 'a') {
+                $('#artists').prepend(mainObject.favorites[i]);
+            }
+            else {
+                $('#images').prepend(mainObject.favorites[i]);
+            }
+        }
+
+    }
+}
+
 function ajaxCall() {
 
     if (mainObject.animals.includes($(this).val()) === true || mainObject.food.includes($(this).val()) === true) {
@@ -61,13 +87,10 @@ function ajaxCall() {
         $('#artists').empty();
         var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + $(this).val() + "&api_key=dc6zaTOxFJmzC&limit=10";
 
-        // var queryURL = "https://api.giphy.com/v1/gifs/random?api_key=LOnIqnyN2kSCU8ELpisj8AzLaXOmxiEj&tag=" + $(this).val();
-
-        // for (i = 0; i < 10; i++) {
         $.ajax({
             url: queryURL,
             method: "GET"
-        }).then(function(response) {
+        }).then(function (response) {
             console.log('hey');
             for (i = 0; i < 10; i++) {
                 var gifUrl = response.data[i].images.downsized_still.url;
@@ -90,7 +113,7 @@ function ajaxCall() {
         $.ajax({
             url: queryURL,
             method: "GET"
-        }).then(function(response) {
+        }).then(function (response) {
             console.log('hey');
             $('#images').empty();
             var newDiv = $('<div class="artists">');
@@ -109,40 +132,25 @@ function ajaxCall() {
 
 }
 
-$('.form-check-input').click(function(event) {
 
-    if ($(this).prop("checked") == true) {
-        currentCheck = $(this).val();
-    }
+$('.form-check-input').on("click" , formCheck)
 
-    var hey = "Add " + currentCheck;
-    $('#add-something').attr('value', hey);
-    if (currentCheck != 'favorites') {
-        $('#images').empty();
-        createButtons(mainObject[currentCheck]);
-    } else {
-        $('#buttonshere').empty();
-        $('#artists').empty();
-        $('#images').empty();
-        for (i = 0; i < mainObject.favorites.length; i++) {
-            $('#images').prepend(mainObject.favorites[i]);
-
-        }
-
-    }
-})
-
-$("#add-something").on("click", function(event) {
+$("#add-something").on("click", function (event) {
 
     event.preventDefault();
-    var item = $("#movie-input").val().trim();
-    mainObject[currentCheck].push(item);
-    console.log(mainObject[currentCheck]);
-    createButtons(mainObject[currentCheck]);
+    if ($("#movie-input").val() != "") {
+        var item = $("#movie-input").val().trim();
+        $("#movie-input").val('');
+        mainObject[currentCheck].push(item);
+        createButtons(mainObject[currentCheck]);
+    }
+    else {
+        alert('Please write something!');
+    }
 
 });
 
-$("#favorite").on('click', function() {
+$("#favorite").on('click', function () {
     if (!favoriteMode) {
         favoriteMode = true;
         alert('Favorite mode on, click the gifs you want to save!');
@@ -152,6 +160,21 @@ $("#favorite").on('click', function() {
     }
 })
 
+$("#clear").on("click", function () {
+    $("#images").empty();
+    $("#artists").empty();
+})
+
+$('#clearfav').on("click", function () {
+    var userCheck = confirm('Are you sure?')
+    if (userCheck) {
+        localStorage.clear();
+    }
+    else {
+        alert("Favorites have not been erased")
+    }
+
+})
 
 
 $(document).on("click", ".item", ajaxCall);
@@ -159,7 +182,3 @@ $(document).on("click", "img", gifState);
 $(document).on("click", ".imageitem", addFavorite);
 $(document).on("click", ".artists", addFavorite);
 
-$("#clear").on("click", function() {
-    $("#images").empty();
-    $("#artists").empty();
-})
