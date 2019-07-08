@@ -55,15 +55,16 @@ function formCheck() {
     }
 
     var hey = "Add " + currentCheck;
-    $('#add-something').attr('value', hey);
+    
     if (currentCheck != 'favorites') {
         $('#images').empty();
         $('#artists').empty();
         $('#buttonshere').empty();
+        $('#add-something').attr('value', hey);
 
         createButtons(mainObject[currentCheck]);
     } else {
-
+        $('#add-something').attr('value', 'Add');
         $('#buttonshere').empty();
         $('#artists').empty();
         $('#images').empty();
