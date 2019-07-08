@@ -58,6 +58,9 @@ function formCheck() {
     $('#add-something').attr('value', hey);
     if (currentCheck != 'favorites') {
         $('#images').empty();
+        $('#artists').empty();
+        $('#buttonshere').empty();
+
         createButtons(mainObject[currentCheck]);
     } else {
 
