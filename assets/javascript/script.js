@@ -57,14 +57,18 @@ function formCheck() {
     var hey = "Add " + currentCheck;
     
     if (currentCheck != 'favorites') {
+        $('#movie-form').show();
+
         $('#images').empty();
         $('#artists').empty();
         $('#buttonshere').empty();
-        $('#add-something').attr('value', hey);
+        $('#addlabel').text(hey);
+        $('#add-something').attr('value', 'Click to add');
 
         createButtons(mainObject[currentCheck]);
     } else {
-        $('#add-something').attr('value', 'Add');
+        $('#movie-form').hide();
+
         $('#buttonshere').empty();
         $('#artists').empty();
         $('#images').empty();
