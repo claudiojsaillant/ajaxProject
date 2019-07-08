@@ -57,8 +57,8 @@ function formCheck() {
     var hey = "Add " + currentCheck;
     
     if (currentCheck != 'favorites') {
+        $('#clearfav').hide();
         $('#movie-form').show();
-
         $('#images').empty();
         $('#artists').empty();
         $('#buttonshere').empty();
@@ -67,8 +67,8 @@ function formCheck() {
 
         createButtons(mainObject[currentCheck]);
     } else {
+        $('#clearfav').show();
         $('#movie-form').hide();
-
         $('#buttonshere').empty();
         $('#artists').empty();
         $('#images').empty();

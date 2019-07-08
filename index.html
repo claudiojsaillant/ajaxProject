@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 
@@ -23,13 +24,17 @@
     <div class="container">
         <div class="row">
             <div class="mx-auto">
-                <h1>Gif Search!</h1>
+                <h1>Gif and Artist Search!</h1>
+                <div class="row">
+                    
+
+                </div>
             </div>
         </div>
 
         <div class="row">
 
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <h4>Pick a topic!</h4>
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="artists" checked>
@@ -49,6 +54,7 @@
                         Food
                     </label>
                 </div>
+                <h4 id="special">Favorites are stored here!</h4>
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios4" value="favorites">
                     <label class="form-check-label" for="gridRadios4">
@@ -56,12 +62,10 @@
                     </label>
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-4">
                 <form id="movie-form">
                     <label id="addlabel" for="movie-input">Add New</label>
                     <input type="text" id="movie-input"><br>
-
-                    <!-- Button triggers new movie to be added -->
                     <input id="add-something" type="submit" value="Add">
                     <button id="clear">Clear</button>
                 </form>
@@ -71,9 +75,9 @@
                         <button id="clearfav">Clear favorites!</button>
                     </div>
                 </div>
-
-
-
+            </div>
+            <div class="col-md-4">
+                <img src="assets/images/datagif.gif" alt="datagif">
             </div>
         </div>
 

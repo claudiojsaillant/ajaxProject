@@ -1,3 +1,14 @@
+
+body {
+    background-image: url("https://images.pexels.com/photos/988873/pexels-photo-988873.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    font-family: 'Open Sans Condensed', sans-serif;
+}
+
+
+
 img,
 button,
 div,
@@ -32,3 +43,28 @@ img {
     padding-top: 10px;
 }
 
+#special {
+    padding-top: 10px;
+}
+
+h1 {
+    font-size: 65px;
+}
+
+h4 {
+    font-size: 35px;
+}
+
+label {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+button,#add-something {
+    font-size: 22px;
+    font-weight: 500;
+}
+
+a:hover {
+    text-decoration: none;
+}
