@@ -55,8 +55,8 @@ function formCheck() {
     }
 
     var hey = "Add " + currentCheck;
-    
-    if (currentCheck != 'favorites') {
+
+    if (currentCheck != 'favorites' && currentCheck != 'favoriteart') {
         $('#clearfav').hide();
         $('#movie-form').show();
         $('#images').empty();
@@ -66,9 +66,9 @@ function formCheck() {
         $('#add-something').attr('value', 'Click to add');
 
         createButtons(mainObject[currentCheck]);
-    } else {
+    } else if (currentCheck === 'favorites') {
 
-        if (mainObject.favorites.length === 0){
+        if (mainObject.favorites.length === 0) {
             alert("You don't have any favorites")
         }
         $('#clearfav').show();
@@ -76,15 +76,34 @@ function formCheck() {
         $('#buttonshere').empty();
         $('#artists').empty();
         $('#images').empty();
-        
+        $('#images').show();
+
         for (i = 0; i < mainObject.favorites.length; i++) {
-            if (mainObject.favorites[i].substring(12, 13) === 'a') {
-                $('#artists').prepend(mainObject.favorites[i]);
-            }
-            else {
+
+            if (mainObject.favorites[i].substring(12, 13) === 'i') {
                 $('#images').prepend(mainObject.favorites[i]);
             }
+
         }
+
+    }
+    else if (currentCheck === 'favoriteart') {
+        if (mainObject.favorites.length === 0) {
+            alert("You don't have any favorites")
+        }
+        $('#artist').empty();
+        for (i = 0; i < mainObject.favorites.length; i++) {
+            if (mainObject.favorites[i].substring(12, 13) === 'a') {
+
+                $('#artists').prepend(mainObject.favorites[i]);
+            }
+        }
+
+        $('#clearfav').show();
+        $('#movie-form').hide();
+        $('#buttonshere').empty();
+        $('#artists').show();
+        $('#images').hide();
 
     }
 }
@@ -186,7 +205,6 @@ $('#clearfav').on("click", function () {
         alert("Favorites have not been erased")
     }
 })
-
 
 $(document).on("click", ".item", ajaxCall);
 $(document).on("click", "img", gifState);
