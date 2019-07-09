@@ -29,23 +29,33 @@ function addFavorite() {
     var newFavorite = this.outerHTML;
     if (favoriteMode === true && newFavorite != null && newFavorite != undefined) {
         mainObject.favorites.push(newFavorite);
+        // making sure array doesnt have duplicates
+        var newArray = []
+        $.each(mainObject.favorites, function (i, el) {
+            if ($.inArray(el, newArray) === -1) newArray.push(el);
+        });
+
+        mainObject.favorites = newArray;
+
+        console.log(newArray);
         localStorage.setItem("array", JSON.stringify(mainObject.favorites));
     }
 
 }
 
 function gifState() {
-
-    var gifClicked = $(this);
-    var gifState = gifClicked.attr('data-state');
-    var stillSrc = gifClicked.attr('data-still');
-    var animateSrc = gifClicked.attr('data-animate');
-    if (gifState === 'still') {
-        gifClicked.attr('data-state', 'animate');
-        gifClicked.attr('src', animateSrc);
-    } else if (gifState === 'animate') {
-        gifClicked.attr('data-state', 'still');
-        gifClicked.attr('src', stillSrc);
+    if (favoriteMode === false) {
+        var gifClicked = $(this);
+        var gifState = gifClicked.attr('data-state');
+        var stillSrc = gifClicked.attr('data-still');
+        var animateSrc = gifClicked.attr('data-animate');
+        if (gifState === 'still') {
+            gifClicked.attr('data-state', 'animate');
+            gifClicked.attr('src', animateSrc);
+        } else if (gifState === 'animate') {
+            gifClicked.attr('data-state', 'still');
+            gifClicked.attr('src', stillSrc);
+        }
     }
 }
 
@@ -191,7 +201,7 @@ $("#clear").on("click", function (event) {
     event.preventDefault();
     $("#images").empty();
     $("#artists").empty();
-    
+
 })
 
 $('#clearfav').on("click", function () {
