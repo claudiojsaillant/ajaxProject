@@ -187,9 +187,11 @@ $("#favorite").on('click', function () {
     }
 })
 
-$("#clear").on("click", function () {
+$("#clear").on("click", function (event) {
+    event.preventDefault();
     $("#images").empty();
     $("#artists").empty();
+    
 })
 
 $('#clearfav').on("click", function () {
