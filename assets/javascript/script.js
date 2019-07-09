@@ -62,6 +62,7 @@ function gifState() {
 function formCheck() {
     if ($(this).prop("checked") == true) {
         currentCheck = $(this).val();
+        $('#artists').empty();
     }
 
     var hey = "Add " + currentCheck;
@@ -112,7 +113,6 @@ function formCheck() {
         $('#clearfav').show();
         $('#movie-form').hide();
         $('#buttonshere').empty();
-        $('#artists').show();
         $('#images').hide();
 
     }
