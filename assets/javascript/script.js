@@ -40,7 +40,6 @@ function addFavorite() {
         console.log(newArray);
         localStorage.setItem("array", JSON.stringify(mainObject.favorites));
     }
-
 }
 
 function gifState() {
